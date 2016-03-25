@@ -1,0 +1,54 @@
+light-green = #eaF9e7
+green = #049372
+grey = #95A5A6
+search-field-size = 40px
+
+body 
+	font-family 'Lato', sans-serif !important
+	background-color light-green
+	color grey 
+
+#top-site
+	margin-top 70px
+
+#random-wiki-btn
+	a
+		display block
+		position relative
+		width 200px
+		margin 0 auto
+		font-size 20px
+		color grey 
+		padding 10px
+		&:hover
+			text-decoration none
+		&:hover div
+			visibility visible
+			
+		&:hover .bottom-border
+			width 100%	
+		div
+			transition-duration 0.5s
+			transition-timing-function easy-out
+			position absolute
+			bottom 0
+			right 0
+			width 2px
+			height 2px
+			background-color grey
+			visibility hidden
+
+#search-container
+	margin-top 10px
+	#search-input
+		width search-field-size
+		height search-field-size
+		outline none
+		border-radius 100%
+		border 1px solid grey
+		padding 10px
+		padding-left 15px
+		cursor pointer
+	p
+		margin-top 20px
+
