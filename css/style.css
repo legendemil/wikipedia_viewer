@@ -1,0 +1,40 @@
+body {
+  font-family: 'Lato', sans-serif !important;
+  background-color: #eaf9e7;
+  color: #95a5a6;
+}
+#top-site {
+  margin-top: 70px;
+}
+#random-wiki-btn a {
+  display: block;
+  position: relative;
+  width: 200px;
+  margin: 0 auto;
+  font-size: 20px;
+  color: #95a5a6;
+  padding: 10px;
+}
+#random-wiki-btn a:hover {
+  text-decoration: none;
+}
+#random-wiki-btn a:hover div {
+  visibility: visible;
+}
+#random-wiki-btn a:hover .bottom-border {
+  width: 100%;
+}
+#random-wiki-btn a div {
+  transition-duration: 0.5s;
+  transition-timing-function: easy-out;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 2px;
+  height: 2px;
+  background-color: #95a5a6;
+  visibility: hidden;
+}
+#search-container {
+  margin-top: 10px;
+}
