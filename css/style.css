@@ -90,6 +90,9 @@ body {
   -webkit-animation-fill-mode: forwards;
           animation-fill-mode: forwards;
 }
+#wiki-articles-box {
+  margin-bottom: 10px;
+}
 .wiki-article {
   background-color: #fff;
   padding: 10px;
@@ -137,6 +140,16 @@ body {
           animation-name: anim-wiki-box-hide;
   -webkit-animation-duration: 1s;
           animation-duration: 1s;
+}
+#load-more-btn {
+  display: none;
+  padding: 3px;
+  text-align: center;
+  width: 100px;
+  background-color: #fff;
+  color: #95a5a6;
+  margin: 0 auto;
+  cursor: pointer;
 }
 @-webkit-keyframes show-article {
   0% {

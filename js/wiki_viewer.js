@@ -4,7 +4,8 @@ $(function () {
 		var $searchContainer,
 			$searchInput,
 			$wikiArticlesBox,
-			$clearBtn;
+			$clearBtn,
+			$loadMoreBtn;
 		
 		// modue for handled events
 		var WikiViewerEvents = (function(){
@@ -89,6 +90,7 @@ $(function () {
 							output += tmplCompiled(context);
 						});
 						$wikiArticlesBox.html(output);
+						$loadMoreBtn.show();
 						//wikiQueryOffset += 10;
 					},
 					error: function (error) {
@@ -126,6 +128,7 @@ $(function () {
 			$searchInput = $searchContainer.find('#search-input');
 			$wikiArticlesBox = $('#wiki-articles-box');
 			$clearBtn = $searchContainer.find('#clear-btn');
+			$loadMoreBtn = $('#load-more-btn');
 		}
 
 		function init() {
