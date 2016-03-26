@@ -2,11 +2,14 @@ $(function () {
 	var WikiViewer = (function () {
 		// variables holds DOM elements
 		var $searchContainer,
-			$searchInput;
+			$searchInput,
+			$wikiArticlesBox;
 		
 		// modue for handled events
 		var WikiViewerEvents = (function(){
-			var wikiQueryOffset = 0;
+			var wikiQueryOffset = 0,
+				wikiTmpl = $('#wiki-tmpl').html(),
+				tmplCompiled =  Handlebars.compile(wikiTmpl);
 
 			// resize text input
 			function resizeUpSearchInput(ev) {
@@ -28,35 +31,33 @@ $(function () {
 
 			// get data using wikipedia api
 			function getWikiArticles() {
+				var title = $searchInput.val() || '';
 				$.ajax({
 					type: 'GET',
 					url: 'https://en.wikipedia.org/w/api.php?callback=?',
 					data: {
 						action: 'query',
 						format: 'json',
-						srsearch: 'Barca',
+						srsearch: title,
 						srprop: 'titlesnippet|snippet',
 						list: 'search',
-						sroffset: wikiQueryOffset,
-						continue: ''
-						// prop: 'revisions',
-						// rvprop: 'content',
-						// titles: 'Barca',
-						// prop: 'imageinfo',
-						// iiprop: 'url'
-						// generator: 'allpages',
-						// gaplimit: 6,
-						// gapfilterredir: 'nonredirects',
+						sroffset: wikiQueryOffset
 					},
 					contentType: "application/json; charset=utf-8",
 					dataType: "json",
 					success: function (data, status) {
 						console.log(data);
+						var output  = '';
+
 						data.query.search.forEach(function (element) {
-							var link = '<a href="http://en.wikipedia.org/wiki/' + encodeURIComponent(element.title) +'" target="_blank">Read more</a>';
-							$('body').append(element.snippet + link + '<br><br>');
+							var context = {
+								title: element.title,
+								content: element.snippet,
+								url: 'http://en.wikipedia.org/wiki/' + encodeURIComponent(element.title)
+							};
+							output += tmplCompiled(context);
 						});
-						//$('body').append(data.parse.text['*']);
+						$wikiArticlesBox.html(output);
 						wikiQueryOffset += 10;
 					},
 					error: function (error) {
@@ -89,6 +90,7 @@ $(function () {
 		function cacheDOM() {
 			$searchContainer = $('#search-container');
 			$searchInput = $searchContainer.find('#search-input');
+			$wikiArticlesBox = $('#wiki-articles-box');
 		}
 
 		function init() {
