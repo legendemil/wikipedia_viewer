@@ -29,6 +29,16 @@ $(function () {
 				}
 			}
 
+			//close clearBtn
+			function clearWikiArticles() {
+				$searchInput.val('');
+				$wikiArticlesBox.addClass('wiki-box-hide');
+				setTimeout(function () {
+					$wikiArticlesBox.empty();
+					$wikiArticlesBox.removeClass('wiki-box-hide');
+				}, 1000);
+			}
+
 			// resize text input
 			function resizeUpSearchInput(ev) {
 				ev.stopPropagation();
@@ -99,6 +109,9 @@ $(function () {
 				$($searchInput.closest('form')).on('submit', getWikiData);
 				// resize down search box
 				$('body').on('click', resizeDownSearchInput);
+
+				// clear wiki articles after click clearBtn
+				$clearBtn.on('click', clearWikiArticles);
 
 
 			}

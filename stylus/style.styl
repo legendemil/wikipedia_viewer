@@ -8,6 +8,7 @@ body
 	font-family 'Lato', sans-serif !important
 	background-color light-green
 	color grey 
+	padding-bottom 20px
 
 #top-site
 	margin-top 70px
@@ -87,6 +88,7 @@ body
 	margin-top 10px
 	animation-name show-article
 	animation-duration 1s
+	animation-timing-function cubic-bezier(.49,1,.82,1)
 	border-radius 10px
 	border 1px solid #fff
 	transition 0.5s
@@ -111,6 +113,12 @@ body
 		&:link,
 		&:visited
 			text-decoration none
+
+
+.wiki-box-hide
+	animation-name anim-wiki-box-hide
+	animation-duration 1s
+	
 			
 @keyframes show-article {
 	0% { 
@@ -137,5 +145,16 @@ body
 	100% {
 		transform rotate(-180deg)
 		opacity 0.1		
+	}
+}
+
+
+@keyframes anim-wiki-box-hide {
+	0% {
+
+	}
+	
+	100% {
+		transform perspective(300px) rotateX(90deg)
 	}
 }
