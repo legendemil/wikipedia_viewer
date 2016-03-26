@@ -48,8 +48,46 @@ body {
   padding-left: 15px;
   cursor: pointer;
 }
+#search-container #clear-btn {
+  width: 20px;
+  height: 20px;
+  border: 1px solid #95a5a6;
+  outline: none;
+  border-radius: 100%;
+  margin: 0 auto;
+  cursor: pointer;
+  background-color: #fff;
+  display: none;
+  -webkit-transform-origin: 50% 0;
+      -ms-transform-origin: 50% 0;
+          transform-origin: 50% 0;
+  -webkit-transform: rotate(-180deg);
+      -ms-transform: rotate(-180deg);
+          transform: rotate(-180deg);
+  transition-duration: 0.3s;
+}
+#search-container #clear-btn:hover {
+  background-color: #95a5a6;
+  color: #fff;
+}
 #search-container p {
   margin-top: 20px;
+}
+.anim-clear-btn {
+  -webkit-animation-name: animate-clear-btn;
+          animation-name: animate-clear-btn;
+  -webkit-animation-duration: 1s;
+          animation-duration: 1s;
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
+}
+.anim-clear-btn-hide {
+  -webkit-animation-name: animate-clear-btn-hide;
+          animation-name: animate-clear-btn-hide;
+  -webkit-animation-duration: 0.5s;
+          animation-duration: 0.5s;
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
 }
 .wiki-article {
   background-color: #fff;
@@ -109,5 +147,39 @@ body {
   100% {
     -webkit-transform: translateY(0);
             transform: translateY(0);
+  }
+}
+@-webkit-keyframes animate-clear-btn {
+  100% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+}
+@keyframes animate-clear-btn {
+  100% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+}
+@-webkit-keyframes animate-clear-btn-hide {
+  0% {
+    -webkit-transform: rotate(-90deg);
+            transform: rotate(-90deg);
+  }
+  100% {
+    -webkit-transform: rotate(-180deg);
+            transform: rotate(-180deg);
+    opacity: 0.1;
+  }
+}
+@keyframes animate-clear-btn-hide {
+  0% {
+    -webkit-transform: rotate(-90deg);
+            transform: rotate(-90deg);
+  }
+  100% {
+    -webkit-transform: rotate(-180deg);
+            transform: rotate(-180deg);
+    opacity: 0.1;
   }
 }

@@ -50,9 +50,36 @@ body
 		padding 10px
 		padding-left 15px
 		cursor pointer
+		
+	#clear-btn
+		width (search-field-size / 2)
+		height (search-field-size / 2)
+		border 1px solid grey
+		outline none
+		border-radius 100%
+		margin 0 auto
+		cursor pointer
+		background-color white
+		display none
+		transform-origin 50% 0
+		transform rotate(-180deg);
+		transition-duration 0.3s
+		&:hover
+			background-color grey
+			color #fff
+		
 	p
 		margin-top 20px
 
+.anim-clear-btn
+	animation-name animate-clear-btn
+	animation-duration 1s
+	animation-fill-mode forwards
+	
+.anim-clear-btn-hide
+	animation-name animate-clear-btn-hide
+	animation-duration 0.5s
+	animation-fill-mode forwards
 
 .wiki-article
 	background-color #fff
@@ -92,5 +119,23 @@ body
 	}
 	100% {
 		transform translateY(0)
+	}
+}
+
+
+@keyframes animate-clear-btn {
+	0% {}
+	100% {
+		transform rotate(0deg);
+	}
+}
+
+@keyframes animate-clear-btn-hide {
+	0% {
+		transform rotate(-90deg)
+	}
+	100% {
+		transform rotate(-180deg)
+		opacity 0.1		
 	}
 }

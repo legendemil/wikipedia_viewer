@@ -3,13 +3,31 @@ $(function () {
 		// variables holds DOM elements
 		var $searchContainer,
 			$searchInput,
-			$wikiArticlesBox;
+			$wikiArticlesBox,
+			$clearBtn;
 		
 		// modue for handled events
 		var WikiViewerEvents = (function(){
 			var wikiQueryOffset = 0,
 				wikiTmpl = $('#wiki-tmpl').html(),
 				tmplCompiled =  Handlebars.compile(wikiTmpl);
+
+			// toggle clearbtn
+			function toggleClearBtn(show) {
+				if(show) {
+					$clearBtn.css('display', 'block');
+					$clearBtn.removeClass('anim-clear-btn-hide');
+					$clearBtn.addClass('anim-clear-btn');
+				}
+				else {
+					
+					$clearBtn.addClass('anim-clear-btn-hide');
+					$clearBtn.removeClass('anim-clear-btn');
+					setTimeout(function () {
+						$clearBtn.css('display', 'none');
+					},400);
+				}
+			}
 
 			// resize text input
 			function resizeUpSearchInput(ev) {
@@ -19,6 +37,8 @@ $(function () {
 					width: '200px',
 					borderRadius: '20px'
 				}, 300);
+				toggleClearBtn(true);
+
 			}
 
 			// resize down text field
@@ -27,6 +47,7 @@ $(function () {
 				$($searchInput).animate({
 					width: '40px'
 				}, 300);
+				toggleClearBtn(false);
 			}
 
 			// get data using wikipedia api
@@ -91,6 +112,7 @@ $(function () {
 			$searchContainer = $('#search-container');
 			$searchInput = $searchContainer.find('#search-input');
 			$wikiArticlesBox = $('#wiki-articles-box');
+			$clearBtn = $searchContainer.find('#clear-btn');
 		}
 
 		function init() {
