@@ -58,7 +58,7 @@ $(function () {
 							output += tmplCompiled(context);
 						});
 						$wikiArticlesBox.html(output);
-						wikiQueryOffset += 10;
+						//wikiQueryOffset += 10;
 					},
 					error: function (error) {
 						console.log(error);

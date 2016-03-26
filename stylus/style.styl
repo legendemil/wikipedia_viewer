@@ -1,5 +1,6 @@
 light-green = #eaF9e7
 green = #049372
+green2 = #66CC99
 grey = #95A5A6
 search-field-size = 40px
 
@@ -52,3 +53,44 @@ body
 	p
 		margin-top 20px
 
+
+.wiki-article
+	background-color #fff
+	padding 10px
+	margin-top 10px
+	animation-name show-article
+	animation-duration 1s
+	border-radius 10px
+	border 1px solid #fff
+	transition 0.5s
+	&:hover
+		border 1px solid grey
+	h1
+		padding-bottom 10px
+		border-bottom 1px solid grey
+	.wiki-article-href > a
+		transform perspective(80px) rotateY(20deg)
+		transition-duration 0.3s
+		margin-top 10px
+		display inline-block
+		padding 5px
+		text-align center
+		border 1px solid green2
+		border-radius 10px
+		color green2 !important
+		&:hover
+			transform rotateY(-20deg)
+		&:hover,
+		&:link,
+		&:visited
+			text-decoration none
+			
+@keyframes show-article {
+	0% { 
+		transform perspective(300px) translateY(200%) rotateX(90deg)
+		
+	}
+	100% {
+		transform translateY(0)
+	}
+}
