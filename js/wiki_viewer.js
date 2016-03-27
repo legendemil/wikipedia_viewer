@@ -42,6 +42,12 @@ $(function () {
 				}, 1000);
 			}
 
+			// laod more wikis
+			function loadMoreWikis(argument) {
+				wikiQueryOffset += 10;
+				getWikiArticles(true);
+			}
+
 			// resize text input
 			function resizeUpSearchInput(ev) {
 				ev.stopPropagation();
@@ -64,7 +70,7 @@ $(function () {
 			}
 
 			// get data using wikipedia api
-			function getWikiArticles() {
+			function getWikiArticles(loadMore) {
 				var title = $searchInput.val() || '';
 				$.ajax({
 					type: 'GET',
@@ -91,9 +97,16 @@ $(function () {
 							};
 							output += tmplCompiled(context);
 						});
-						$wikiArticlesBox.html(output);
-						$loadMoreBtn.show();
-						//wikiQueryOffset += 10;
+
+						if(loadMore) {
+							$wikiArticlesBox.append(output);
+						}
+						else {
+							$wikiArticlesBox.html(output);
+							$loadMoreBtn.show();
+						}
+						
+						
 					},
 					error: function (error) {
 						console.log(error);
@@ -111,11 +124,12 @@ $(function () {
 				// on click resize input field
 				$searchInput.on('click', resizeUpSearchInput);
 				$($searchInput.closest('form')).on('submit', getWikiData);
-				// resize down search box
-				//$('body').on('click', resizeDownSearchInput);
-
+				// resize down search box and
 				// clear wiki articles after click clearBtn
 				$clearBtn.on('click', clearWikiArticles);
+
+				// laod more wikis
+				$loadMoreBtn.on('click', loadMoreWikis);
 
 
 			}
