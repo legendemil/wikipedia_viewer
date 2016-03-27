@@ -69,9 +69,19 @@ $(function () {
 				toggleClearBtn(false);
 			}
 
+			function showNoWikisAlert() {
+				var noDataDiv = '<div class="no-wikis-alert">Sorry but we can\'t find anything :(</div>';
+				$wikiArticlesBox.html(noDataDiv);
+			}
+
 			// get data using wikipedia api
 			function getWikiArticles(loadMore) {
 				var title = $searchInput.val() || '';
+				if(!title) {
+					showNoWikisAlert();
+					return;
+				}
+
 				$.ajax({
 					type: 'GET',
 					url: 'https://en.wikipedia.org/w/api.php?callback=?',
@@ -110,9 +120,7 @@ $(function () {
 							}
 						} else {
 							$loadMoreBtn.hide();
-							var noDataDiv = '<div class="no-wikis-alert">Sorry but we can\'t find anything :(</div>';
-							output = noDataDiv;
-							$wikiArticlesBox.html(output);
+							showNoWikisAlert();
 						}
 
 						
