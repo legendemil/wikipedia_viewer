@@ -1,5 +1,6 @@
 light-green = #eaF9e7
 green = #049372
+green2 = #66CC99
 grey = #95A5A6
 search-field-size = 40px
 
@@ -7,19 +8,23 @@ body
 	font-family 'Lato', sans-serif !important
 	background-color light-green
 	color grey 
+	padding-bottom 20px
 
 #top-site
 	margin-top 70px
 
 #random-wiki-btn
 	a
+		text-decoration none
 		display block
 		position relative
-		width 200px
+		width 350px
 		margin 0 auto
 		font-size 20px
 		color grey 
 		padding 10px
+		font-size 3em
+		font-weight 100
 		&:hover
 			text-decoration none
 		&:hover div
@@ -33,8 +38,8 @@ body
 			position absolute
 			bottom 0
 			right 0
-			width 2px
-			height 2px
+			width 1px
+			height 1px
 			background-color grey
 			visibility hidden
 
@@ -49,6 +54,145 @@ body
 		padding 10px
 		padding-left 15px
 		cursor pointer
+		
+	#clear-btn
+		width (search-field-size / 2)
+		height (search-field-size / 2)
+		padding-left 1px
+		border 1px solid grey
+		outline none
+		border-radius 100%
+		margin 0 auto
+		cursor pointer
+		background-color white
+		display none
+		transform-origin 50% 0
+		transform rotate(-180deg);
+		transition-duration 0.3s
+		&:hover
+			background-color grey
+			color #fff
+		
 	p
 		margin-top 20px
 
+.anim-clear-btn
+	animation-name animate-clear-btn
+	animation-duration 1s
+	animation-fill-mode forwards
+	
+.anim-clear-btn-hide
+	animation-name animate-clear-btn-hide
+	animation-duration 0.5s
+	animation-fill-mode forwards
+
+#wiki-articles-box
+	margin-bottom 10px
+
+.wiki-article
+	background-color #fff
+	padding 10px
+	margin-top 10px
+	animation-name show-article
+	animation-duration 1s
+	animation-timing-function cubic-bezier(.49,1,.82,1)
+	border-radius 10px
+	border 1px solid #fff
+	transition 0.5s
+	&:hover
+		border 1px solid grey
+	h1
+		padding-bottom 10px
+		border-bottom 1px solid grey
+	.wiki-article-href > a
+		transform perspective(80px) rotateY(20deg)
+		transition-duration 0.3s
+		margin-top 10px
+		display inline-block
+		padding 5px
+		text-align center
+		border 1px solid green2
+		border-radius 10px
+		color green2 !important
+		&:hover
+			transform rotateY(-20deg)
+		&:hover,
+		&:link,
+		&:visited
+			text-decoration none
+
+
+.wiki-box-hide
+	animation-name anim-wiki-box-hide
+	animation-duration 1s
+	
+#load-more-btn
+	display none
+	padding 3px
+	text-align center
+	width 100px
+	background-color white
+	color grey
+	margin 0 auto
+	cursor pointer
+	
+
+.no-wikis-alert
+	text-align center
+	font-weight 100
+	font-size 2.5em
+	background-color #fff
+	color grey
+	padding 10px
+	border-radius 10px
+	animation-name show-no-wikis
+	animation-duration 0.8s
+			
+@keyframes show-article {
+	0% { 
+		transform perspective(300px) translateY(200%) rotateX(90deg)
+		
+	}
+	100% {
+		transform translateY(0)
+	}
+}
+
+
+@keyframes animate-clear-btn {
+	0% {}
+	100% {
+		transform rotate(0deg);
+	}
+}
+
+@keyframes animate-clear-btn-hide {
+	0% {
+		transform rotate(-90deg)
+	}
+	100% {
+		transform rotate(-180deg)
+		opacity 0.1		
+	}
+}
+
+
+@keyframes anim-wiki-box-hide {
+	0% {
+
+	}
+	
+	100% {
+		transform perspective(300px) rotateX(90deg)
+	}
+}
+
+@keyframes show-no-wikis {
+	0% {
+		transform scaleX(0.1)
+	}
+	
+	100% {
+
+	}
+}

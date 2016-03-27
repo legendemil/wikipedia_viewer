@@ -25,18 +25,36 @@
 				</div>
 				<div id='search-container' class='text-center'>
 					<form>
-						<input type='text' name='search' id='search-input' > 
+						<input type='text' name='search' id='search-input' > <br>
+						<div id='clear-btn'>X</div>
 						<p>Click above to search some interesting wiki</p>
 					</form>
 				</div>
-
+				<div id="wiki-articles-box">
+					
+				</div>
+				<div id="load-more-btn">Load more...</div>
 			</div>
 		</div>
 	</div>
 
+	<script id='wiki-tmpl' type="text/x-handlebars-template">
+		<div class="wiki-article">
+			<h1>{{ title }}</h1>
+			<div class='wiki-article-content'>
+				{{{ content }}}
+			</div>
+			<div class='wiki-article-href' target='_blank'>
+				<a href="{{ url }}" target='_blank'>Read more</a>
+			</div>
+		</div>
+	</script>
+
 
 	<!-- Jquery -->
 	<script   src="https://code.jquery.com/jquery-2.2.2.min.js"   integrity="sha256-36cp2Co+/62rEAAYHLmRCPIych47CvdM+uTBJwSzWjI="   crossorigin="anonymous"></script>
+	<!-- handlebars -->
+	<script src='https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.min.js'></script>
 
 	<script src='js/wiki_viewer.js'></script>
 </body>
