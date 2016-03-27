@@ -135,6 +135,18 @@ body
 	color grey
 	margin 0 auto
 	cursor pointer
+	
+
+.no-wikis-alert
+	text-align center
+	font-weight 100
+	font-size 2.5em
+	background-color #fff
+	color grey
+	padding 10px
+	border-radius 10px
+	animation-name show-no-wikis
+	animation-duration 0.8s
 			
 @keyframes show-article {
 	0% { 
@@ -172,5 +184,15 @@ body
 	
 	100% {
 		transform perspective(300px) rotateX(90deg)
+	}
+}
+
+@keyframes show-no-wikis {
+	0% {
+		transform scaleX(0.1)
+	}
+	
+	100% {
+
 	}
 }

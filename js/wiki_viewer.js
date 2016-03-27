@@ -88,23 +88,34 @@ $(function () {
 					success: function (data, status) {
 						console.log(data);
 						var output  = '';
+						var wikis = data.query.search;
 
-						data.query.search.forEach(function (element) {
-							var context = {
-								title: element.title,
-								content: element.snippet,
-								url: 'http://en.wikipedia.org/wiki/' + encodeURIComponent(element.title)
-							};
-							output += tmplCompiled(context);
-						});
-
-						if(loadMore) {
-							$wikiArticlesBox.append(output);
-						}
-						else {
+						//check if find any wikis
+						if(wikis.length > 0) {
+							wikis.forEach(function (element) {
+								var context = {
+									title: element.title,
+									content: element.snippet,
+									url: 'http://en.wikipedia.org/wiki/' + encodeURIComponent(element.title)
+								};
+								output += tmplCompiled(context);
+							});
+							//if user want to laod more
+							if(loadMore) {
+								$wikiArticlesBox.append(output);
+							}
+							else {
+								$wikiArticlesBox.html(output);
+								$loadMoreBtn.show();
+							}
+						} else {
+							$loadMoreBtn.hide();
+							var noDataDiv = '<div class="no-wikis-alert">Sorry but we can\'t find anything :(</div>';
+							output = noDataDiv;
 							$wikiArticlesBox.html(output);
-							$loadMoreBtn.show();
 						}
+
+						
 						
 						
 					},
