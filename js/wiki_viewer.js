@@ -32,7 +32,9 @@ $(function () {
 
 			//close clearBtn
 			function clearWikiArticles() {
+				resizeDownSearchInput();
 				$searchInput.val('');
+				$loadMoreBtn.css('display', 'none');
 				$wikiArticlesBox.addClass('wiki-box-hide');
 				setTimeout(function () {
 					$wikiArticlesBox.empty();
@@ -110,7 +112,7 @@ $(function () {
 				$searchInput.on('click', resizeUpSearchInput);
 				$($searchInput.closest('form')).on('submit', getWikiData);
 				// resize down search box
-				$('body').on('click', resizeDownSearchInput);
+				//$('body').on('click', resizeDownSearchInput);
 
 				// clear wiki articles after click clearBtn
 				$clearBtn.on('click', clearWikiArticles);
