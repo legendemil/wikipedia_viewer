@@ -54,6 +54,7 @@ body {
 #search-container #clear-btn {
   width: 20px;
   height: 20px;
+  padding-left: 1px;
   border: 1px solid #95a5a6;
   outline: none;
   border-radius: 100%;
